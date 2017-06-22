@@ -8,7 +8,7 @@ June 17, 2017
 
 ```r
 library(plyr)
-setwd("C:\\Users\\aura7\\Documents\\SMU\\Courses\\Summer1\\DoingDS_MSDS6306\\week6\\Unit6_Assignment\\Rollingsales_queens\\Data")
+setwd("C:\\Users\\aura7\\Documents\\SMU\\Courses\\Summer1\\DoingDS_MSDS6306\\week6\\Unit6_Assignment\\Rollingsales_queens_v1\\Data")
 
 # http://www1.nyc.gov/site/finance/taxes/property-rolling-sales-data.page
 ```

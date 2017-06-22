@@ -4,7 +4,7 @@
 library(plyr)
 
 
-setwd("C:\Users\aura7\Documents\SMU\Courses\Summer1\DoingDS_MSDS6306\week6\Unit6_Assignment\Rollingsales_queens")
+setwd("C:\Users\aura7\Documents\SMU\Courses\Summer1\DoingDS_MSDS6306\week6\Unit6_Assignment\Rollingsales_queens_v1")
 
 # http://www1.nyc.gov/site/finance/taxes/property-rolling-sales-data.page
 
