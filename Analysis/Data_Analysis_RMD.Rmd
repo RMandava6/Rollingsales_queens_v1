@@ -1,0 +1,44 @@
+---
+title: "Data_Analysis_RMD"
+author: "Paul Ramin Ramya"
+date: "June 17, 2017"
+output:
+  html_document:
+    keep_md: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## This is the Analysis of the rollingsales_queens data file after it has been cleaned and limited to 1,2 and 3 family homes.  The Cleaning process is included in the R Code to this markdown, but not in this Markdown itself.  The cleaning process is described in detail in "data_cleaning_Markdown."
+
+```{r}
+
+library(plyr)
+#setwd("C:\\Users\\aura7\\Documents\\SMU\\Courses\\Summer1\\DoingDS_MSDS6306\\week6\\Unit6_Assignment\\Rollingsales_queensv1\\Analysis")
+bk <- read.csv("Data\\rollingsales_queens.csv",skip=4,header=TRUE)
+bk$SALE.PRICE.N <- as.numeric(gsub("[^[:digit:]]","", bk$SALE.PRICE))
+names(bk) <- tolower(names(bk)) # make all variable names lower case
+bk$gross.sqft <- as.numeric(gsub("[^[:digit:]]","", bk$gross.square.feet))
+bk$land.sqft <- as.numeric(gsub("[^[:digit:]]","", bk$land.square.feet))
+bk$year.built <- as.numeric(as.character(bk$year.built))
+bk.sale <- bk[bk$sale.price.n!=0,]
+bk.homes <- bk.sale[which(grepl("FAMILY",bk.sale$building.class.category)),]
+bk.homes$outliers <- (log10(bk.homes$sale.price.n) <=5) + 0
+bk.homes <- bk.homes[which(bk.homes$outliers==0),]
+```
+
+##  Preliminary Analysis of relationship between Square footage and Sales Price in Queens.
+On Clean data with Outliers removed, for 1-3 Family Properties.
+Starting point for analysis by other Factor Variables
+```{r}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+
+plot(log10(bk.homes$gross.sqft),log10(bk.homes$sale.price.n))
+```
+
+To the eye it appears that there is a positive correllation between log10 Square Footage and log10 Sale Price in Queens overall.
